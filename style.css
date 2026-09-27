@@ -1,0 +1,277 @@
+:root{
+  --ink:#0F1420; --surface:#161D2E; --surface-2:#1D2540;
+  --text:#EDEFF5; --muted:#8B93A7; --line:#2A3350;
+  --accent:#4C7CF3; --accent-dim:#294277;
+  --sec:#E8A33D;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-padding-top:env(safe-area-inset-top,0px); 
+    scroll-behavior:smooth;
+}
+
+body{
+  margin:0; 
+  background:var(--ink); 
+  color:var(--text);
+  font-family:'IBM Plex Sans', system-ui, sans-serif;
+  line-height:1.6; 
+  -webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3{
+    font-family:'Space Grotesk', sans-serif; 
+    margin:0; 
+    letter-spacing:-0.01em;
+}
+
+.mono{
+    font-family:'IBM Plex Mono', monospace;
+}
+
+a{
+    color:inherit;
+}
+
+.wrap{
+    max-width:920px; 
+    margin:0 auto; 
+    padding:0 24px;
+}
+
+::selection{
+    background:var(--accent-dim); 
+    color:#fff;
+}
+
+@media (prefers-reduced-motion: no-preference){
+  .reveal{
+    animation:up .7s ease both;
+}
+  @keyframes up{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:none;}}
+}
+
+/* NAV */
+header{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:10;
+  background:rgba(15,20,32,0.85); backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line);
+}
+
+nav.wrap{
+    display:flex; 
+    justify-content:space-between; 
+    align-items:center; 
+    height:64px;
+}
+
+.brand{
+    font-weight:600; 
+    font-size:1.05rem;
+}
+
+.brand span{
+    color:var(--accent);
+}
+
+nav ul{
+    list-style:none; 
+    display:flex; 
+    gap:28px; 
+    margin:0; 
+    padding:0;
+}
+
+
+nav a{
+    text-decoration:none; 
+    color:var(--muted); 
+    font-size:0.92rem;
+}
+
+nav a:hover, nav a:focus-visible{
+    color:var(--text);
+}
+
+.navlinks{
+    display:flex;
+}
+@media (max-width:640px){
+     .navlinks{display:none;
+    } 
+}
+
+/* HERO */
+.hero{
+    padding:88px 0 64px; 
+    border-bottom:1px solid var(--line); 
+    position:relative; 
+    overflow:hidden;
+}
+
+.kicker{
+    color:var(--accent); 
+    font-size:0.85rem; 
+    margin-bottom:14px;
+}
+
+.hero h1{
+    font-size:clamp(2.2rem, 6vw, 3.6rem); 
+    font-weight:700; 
+    max-width:14ch;
+}
+
+.hero p.lede{
+    color:var(--muted); 
+    font-size:1.1rem;
+    max-width:52ch; 
+    margin-top:18px;
+}
+
+.stack-strip{
+    display:flex; 
+    gap:0; 
+    margin-top:40px; 
+    border:1px solid var(--line); 
+    border-radius:4px; 
+    overflow:hidden;
+}
+
+.stack-strip div{
+    flex:1; padding:14px 16px; 
+    font-size:0.82rem; 
+    border-right:1px solid var(--line);
+}
+
+.stack-strip div:last-child{border-right:none;}
+.stack-strip .lbl{color:var(--muted); display:block; margin-bottom:4px;}
+.stack-strip .val{font-weight:500;}
+.cta-row{display:flex; gap:14px; margin-top:36px; flex-wrap:wrap;}
+.btn{padding:12px 22px; border-radius:4px; text-decoration:none; font-size:0.9rem; font-weight:500;}
+.btn.primary{background:var(--accent); color:#fff;}
+.btn.ghost{border:1px solid var(--line); color:var(--text);}
+
+/* SECTIONS */
+section{padding:64px 0; border-bottom:1px solid var(--line);}
+.eyebrow-row{display:flex; align-items:baseline; gap:12px; margin-bottom:34px;}
+.eyebrow-row .num{color:var(--muted); font-size:0.85rem;}
+.eyebrow-row h2{font-size:1.6rem;}
+
+/* ABOUT */
+.about p{color:var(--muted); max-width:64ch; font-size:1rem;}
+.about strong{color:var(--text); font-weight:500;}
+
+/* STACK / SKILLS as layered diagram */
+.layers{display:flex; flex-direction:column; gap:10px; max-width:640px;}
+.layer{border:1px solid var(--line); border-radius:4px; padding:16px 20px; background:var(--surface);}
+.layer-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;}
+.layer-head h3{font-size:1rem;}
+.layer-head span{color:var(--muted); font-size:0.78rem;}
+.chips{display:flex; flex-wrap:wrap; gap:8px;}
+.chip{font-size:0.78rem; padding:4px 10px; border:1px solid var(--line); border-radius:20px; color:var(--muted);}
+
+/* PROJECTS */
+.projects{display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line);}
+@media (max-width:640px){ .projects{grid-template-columns:1fr;} }
+.project{background:var(--ink); padding:26px;}
+.project h3{font-size:1.1rem; margin-bottom:8px;}
+.project p{color:var(--muted); font-size:0.92rem; margin:0 0 14px;}
+.project .tags{font-size:0.76rem; color:var(--accent);}
+.project a{font-size:0.82rem; text-decoration:underline; color:var(--text);}
+
+/* LEARNING NOW - terminal block */
+.terminal{
+  background:var(--surface); border:1px solid var(--line); border-radius:6px;
+  padding:22px 24px; max-width:640px; font-size:0.88rem;
+}
+.terminal .row{
+    display:flex; 
+    gap:10px; 
+    margin-bottom:8px;
+}
+
+.terminal .prompt{
+    color:var(--sec);
+}
+.terminal .out{
+    color:var(--muted);
+}
+
+/* EDUCATION */
+.edu-item{
+    display:flex; 
+    justify-content:space-between; 
+    gap:20px; 
+    padding:16px 0; 
+    border-top:1px solid var(--line);
+}
+
+.edu-item:first-child{
+    border-top:none;
+}
+
+.edu-item h3{
+    font-size:1rem; 
+    font-weight:500;
+}
+
+.edu-item .school{
+    color:var(--muted); 
+    font-size:0.9rem;
+}
+
+.edu-item .yr{
+    color:var(--muted); 
+    font-size:0.85rem; 
+    white-space:nowrap;
+}
+
+/* CONTACT */
+.contact-grid{
+    display:flex; 
+    flex-wrap:wrap; 
+    gap:14px;
+}
+
+.contact-card{
+    flex:1; 
+    min-width:200px; 
+    border:1px solid var(--line); 
+    border-radius:4px; 
+    padding:18px 20px; 
+    background:var(--surface);
+}
+
+.contact-card .lbl{
+    color:var(--muted); 
+    font-size:0.78rem; 
+    display:block; 
+    margin-bottom:6px;
+}
+
+.contact-card a{
+    font-size:0.95rem; 
+    text-decoration:none;
+}
+
+.contact-card a:hover{
+    color:var(--accent);
+}
+
+footer{
+    padding:32px 0; 
+    text-align:center; 
+    color:var(--muted); 
+    font-size:0.82rem;}
+
+:focus-visible{
+    outline:2px solid var(--accent); 
+    outline-offset:2px;
+}
